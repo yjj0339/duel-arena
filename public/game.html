@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>双人对决</title>
+<link rel="stylesheet" href="/design.css">
+<script src="/net.js"></script>
+<script src="/sdk.js"></script>
+<script src="/registry.js"></script>
+</head>
+<body>
+<script>
+(() => {
+  const g = new URLSearchParams(location.search).get('g') || 'gomoku';
+  const s = document.createElement('script');
+  s.src = '/games/' + g + '/main.js';
+  s.onload = () => { try { GameKit.boot(window.GameDef); } catch (e) { document.body.innerHTML = '<p style="padding:40px">游戏加载失败：' + e.message + '</p>'; } };
+  s.onerror = () => { document.body.innerHTML = '<p style="padding:40px">未找到该游戏</p>'; };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

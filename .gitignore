@@ -1,0 +1,6 @@
+data/
+test/srv.log
+*.log
+.workbuddy/
+node_modules/
+.DS_Store
